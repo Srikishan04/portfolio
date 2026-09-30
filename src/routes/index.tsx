@@ -118,7 +118,7 @@ const videos: Array<{
     title: "Warden's",
     copy: "Brand film direction focused on tension, contrast, and sharp visual rhythm.",
     cover: "wardensCover",
-    media: "bordensVideo",
+    media: "wardensVideo",
   },
   {
     title: "Editing Showreel",
@@ -1206,13 +1206,13 @@ function Footer({ setCursorMode }: { setCursorMode: (mode: CursorMode) => void }
           <div className="flex min-w-0 flex-col gap-4">
             <p className="text-xs font-bold uppercase">Contact</p>
             <a
-              href="mailto:srikishansethu00@gmail.com"
+              href="mailto:srikishansethu06@gmail.com"
               className="inline-flex items-center gap-3 break-all text-lg font-semibold hover:text-foreground"
               onMouseEnter={() => setCursorMode("link")}
               onMouseLeave={() => setCursorMode("default")}
             >
               <Mail className="size-5 shrink-0" aria-hidden="true" />
-              srikishansethu00@gmail.com
+              srikishansethu06@gmail.com
             </a>
             <a
               href="tel:+917358009276"
