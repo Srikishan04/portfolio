@@ -40,9 +40,12 @@ export const portfolioMedia = {
   sangeetKalaCover: "/Media/Cover/sangeet kala cover.png",
   wardensCover: "/Media/Cover/wardens cover.png",
   editingShowreelCover: "/Media/Cover/editing showreel.png",
-  sangeetKalaVideo: "https://mlvnnmwxsfozv3cb.public.blob.vercel-storage.com/sangeet%20kala%20-%20Kishan.mp4",
-  wardensVideo: "https://mlvnnmwxsfozv3cb.public.blob.vercel-storage.com/Wardens%20Port%201.mp4",
-  editingShowreelVideo: "https://mlvnnmwxsfozv3cb.public.blob.vercel-storage.com/video_editing_portfolio.mp4",
+  sangeetKalaVideo:
+    "https://mlvnnmwxsfozv3cb.public.blob.vercel-storage.com/sangeet%20kala%20-%20Kishan.mp4",
+  wardensVideo:
+    "https://mlvnnmwxsfozv3cb.public.blob.vercel-storage.com/Wardens%20Port%201.mp4",
+  editingShowreelVideo:
+    "https://mlvnnmwxsfozv3cb.public.blob.vercel-storage.com/video_editing_portfolio.mp4",
   artwork01: "/Media/Photos-and-artworks/1.jpg",
   artwork02: "/Media/Photos-and-artworks/2.jpg",
   artwork03: "/Media/Photos-and-artworks/3.PNG",
