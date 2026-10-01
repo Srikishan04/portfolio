@@ -60,7 +60,32 @@ type UxProject = {
   cover: MediaKey;
   presentation: MediaKey;
   categoryPresentation: MediaKey;
+  sections?: readonly PresentationCategory[];
 };
+
+type PresentationCategory = {
+  label: string;
+  page: number;
+  description: string;
+};
+
+const bookingPresentationSections = [
+  { label: "Landing screen", page: 1, description: "The opening screen and first impression." },
+  { label: "Intro", page: 2, description: "An introduction to the waterway booking experience." },
+  { label: "Landing", page: 3, description: "Welcome travelers and choose a preferred language." },
+  { label: "Choose island", page: 4, description: "Browse and choose an island destination." },
+  {
+    label: "Different options",
+    page: 5,
+    description: "Compare boats and available travel options.",
+  },
+  { label: "Summary", page: 6, description: "Review the itinerary, passengers, and ticket total." },
+  {
+    label: "Payment section",
+    page: 7,
+    description: "Complete payment and review the confirmation.",
+  },
+] as const satisfies readonly PresentationCategory[];
 
 const uxProjects = [
   {
@@ -78,8 +103,9 @@ const uxProjects = [
     type: "Booking system · Interface design",
     copy: "A direct kiosk flow designed around fast choices, visible availability, and confident confirmation.",
     cover: "kioskBookingCover",
-    presentation: "kioskBookingPresentation",
+    presentation: "kioskBookingProjectImage",
     categoryPresentation: "kioskBookingPresentation",
+    sections: bookingPresentationSections,
   },
   {
     title: "Stuart",
@@ -563,6 +589,7 @@ function UxSection({
           {uxProjects.map((project) => {
             const href = portfolioMedia[project.presentation];
             const categoryHref = portfolioMedia[project.categoryPresentation];
+            const sections = project.sections ?? presentationCategories;
             const usesPngPresentation = Boolean(href?.toLowerCase().endsWith(".png"));
             const content = (
               <>
@@ -620,7 +647,7 @@ function UxSection({
                       aria-label={`${project.title} presentation categories`}
                       className="flex flex-wrap gap-2 border-t border-gridline px-5 py-4 sm:px-7"
                     >
-                      {presentationCategories.map((category) => (
+                      {sections.map((category) => (
                         <button
                           key={category.label}
                           type="button"
@@ -932,7 +959,7 @@ function ArtworkSection({
   );
 }
 
-const presentationCategories = [
+const presentationCategories: readonly PresentationCategory[] = [
   { label: "Cover", page: 1, description: "Start with the project and its core idea." },
   { label: "Context", page: 2, description: "See the brief, audience, and design setting." },
   { label: "Research", page: 3, description: "Explore the observations behind the work." },
@@ -954,9 +981,8 @@ function PresentationViewer({
   const viewerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
   const [activePage, setActivePage] = useState(page);
-  const selectedCategory = presentationCategories.find(
-    (category) => category.page === activePage,
-  ) ?? {
+  const sections = project.sections ?? presentationCategories;
+  const selectedCategory = sections.find((category) => category.page === activePage) ?? {
     label: "Cover",
     page: 1,
     description: "Start with the project and its core idea.",
@@ -976,8 +1002,7 @@ function PresentationViewer({
         imageElement.getBoundingClientRect().top -
         viewer.getBoundingClientRect().top +
         viewer.scrollTop;
-      const sectionOffset =
-        ((page - 1) / presentationCategories.length) * imageElement.clientHeight;
+      const sectionOffset = ((page - 1) / sections.length) * imageElement.clientHeight;
       viewer.scrollTo({
         top: imageTop + sectionOffset - 180,
         behavior: "smooth",
@@ -986,7 +1011,7 @@ function PresentationViewer({
     if (imageElement.complete) scrollToCategory();
     else imageElement.addEventListener("load", scrollToCategory, { once: true });
     return () => imageElement.removeEventListener("load", scrollToCategory);
-  }, [page, project]);
+  }, [page, project, sections]);
 
   if (!image) return null;
 
@@ -1021,7 +1046,7 @@ function PresentationViewer({
           Choose a section to jump through the exported presentation.
         </p>
         <nav aria-label="Presentation sections" className="flex gap-2 overflow-x-auto pb-1">
-          {presentationCategories.map((category) => (
+          {sections.map((category) => (
             <button
               key={category.label}
               type="button"
@@ -1035,7 +1060,7 @@ function PresentationViewer({
                   viewer.getBoundingClientRect().top +
                   viewer.scrollTop;
                 const sectionOffset =
-                  ((category.page - 1) / presentationCategories.length) * imageElement.clientHeight;
+                  ((category.page - 1) / sections.length) * imageElement.clientHeight;
                 viewer.scrollTo({
                   top: imageTop + sectionOffset - 180,
                   behavior: "smooth",

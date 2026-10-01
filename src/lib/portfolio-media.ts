@@ -42,8 +42,7 @@ export const portfolioMedia = {
   editingShowreelCover: "/Media/Cover/editing showreel.png",
   sangeetKalaVideo:
     "https://mlvnnmwxsfozv3cb.public.blob.vercel-storage.com/sangeet%20kala%20-%20Kishan.mp4",
-  wardensVideo:
-    "https://mlvnnmwxsfozv3cb.public.blob.vercel-storage.com/Wardens%20Port%201.mp4",
+  wardensVideo: "https://mlvnnmwxsfozv3cb.public.blob.vercel-storage.com/Wardens%20Port%201.mp4",
   editingShowreelVideo:
     "https://mlvnnmwxsfozv3cb.public.blob.vercel-storage.com/video_editing_portfolio.mp4",
   artwork01: "/Media/Photos-and-artworks/1.jpg",
@@ -64,6 +63,7 @@ export const portfolioMedia = {
   photograph10: "/Media/Photos-and-artworks/IMG_9689.jpg",
   photograph11: "/Media/Photos-and-artworks/IMG_9704.jpg",
   sipitProjectImage: "/Media/Project%20pngs%20to%20avoid%20reader/Sipit%20png.png",
+  kioskBookingProjectImage: "/Media/Project%20pngs%20to%20avoid%20reader/booking%20system.png",
   gameDesignProjectImage: "/Media/Project%20pngs%20to%20avoid%20reader/game%20design%20png.png",
   stuartProjectImage: "/Media/Project%20pngs%20to%20avoid%20reader/stuart%20png.png",
   ethnicVillagePresentationImage:
